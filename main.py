@@ -1,21 +1,19 @@
-list = [1, 2, 3, 4, 5, 7, 9, 12, 14, 15]
-item = 3
+list = [1, 2, 4, 5, 7, 8, 9]
+item = 4
 
-
-def bin_search(item, list):
+def bin_search(list, item):
     min = 0
     max = len(list) - 1
     while min <= max:
-        print('Try n')
-        midd = (min + max) // 2
-        guess = list[midd]
+        mid = (min+max)//2
+        guess = list[mid]
         if guess == item:
-            return midd
-        if guess > item:
-            max = midd + 1
+            return mid
+        if guess < item:
+            min = guess + 1
         else:
-            min = midd - 1
+            max = guess - 1
     return None
 
 
-print(bin_search(item,list))
+print(bin_search(list, item))

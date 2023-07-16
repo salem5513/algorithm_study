@@ -16,6 +16,6 @@ model.fit(X_train, y_train)
 # Прогнозирование классов на тестовой выборке
 y_pred = model.predict(X_test)
 
-# Оценка производительности модели
+# Оценка производительности модели ok
 accuracy = accuracy_score(y_test, y_pred)
 print("Accuracy:", accuracy)

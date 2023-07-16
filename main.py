@@ -1,19 +1,21 @@
-list = [1, 2, 4, 5, 7, 8, 9]
-item = 4
+from sklearn.datasets import load_iris
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
 
-def bin_search(list, item):
-    min = 0
-    max = len(list) - 1
-    while min <= max:
-        mid = (min+max)//2
-        guess = list[mid]
-        if guess == item:
-            return mid
-        if guess < item:
-            min = guess + 1
-        else:
-            max = guess - 1
-    return None
+# Загрузка набора данных Iris
+iris = load_iris()
 
+# Разделение набора данных на обучающую и тестовую выборки
+X_train, X_test, y_train, y_test = train_test_split(iris.data, iris.target, test_size=0.2, random_state=42)
 
-print(bin_search(list, item))
+# Создание и обучение модели логистической регрессии
+model = LogisticRegression()
+model.fit(X_train, y_train)
+
+# Прогнозирование классов на тестовой выборке
+y_pred = model.predict(X_test)
+
+# Оценка производительности модели
+accuracy = accuracy_score(y_test, y_pred)
+print("Accuracy:", accuracy)

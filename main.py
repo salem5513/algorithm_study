@@ -7,7 +7,7 @@ from sklearn.metrics import accuracy_score
 iris = load_iris()
 
 # Разделение набора данных на обучающую и тестовую выборки
-X_train, X_test, y_train, y_test = train_test_split(iris.data, iris.target, test_size=0.9, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(iris.data, iris.target, test_size=0.2, random_state=42)
 
 # Создание и обучение модели логистической регрессии
 model = LogisticRegression()
@@ -15,11 +15,11 @@ model.fit(X_train, y_train)
 
 # Прогнозирование классов на тестовой выборке
 y_pred_test = model.predict(X_test)
-y_train_pred = model.predict(X_train)
+y_pred_train = model.predict(X_train)
 
 # Оценка производительности модели ok
 accuracy = accuracy_score(y_test, y_pred_test)
-accuracy_train = accuracy_score(y_train,y_train_pred)
+accuracy_train = accuracy_score(y_train,y_pred_train)
 print("Accuracy:", accuracy)
 print("Accuracy:", accuracy_train)
 

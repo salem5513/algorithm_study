@@ -1,26 +1,21 @@
-list = [1, 2, 5, 7, 9, 12, 33]  # лист среди которого ищем
-item = 5  # искомое значение
+list = [1, 3, 4, 6, 8]
+item = 4
 
 
-def binary_search(list, item):  # бинарный поиск
-    low = 0                     #устанавливаем границы
+def bin_search(list, item):
+    low = 0
     high = len(list) - 1
-    counter = 0
 
-    ##Когда low становится больше high, это означает, что
-    # интервал для поиска сужается до пустого множества и искомый элемент не найден
-
-    while low <= high:          #циклом пока не дошли до значения или не встретились
-        mid = (low+high) // 2   #берем среднюю позицию
-        print('+1 спроба')
-        guess = list[mid]      #берем элемент под ней
-        if guess == item:      #проверяем
+    while low < high:
+        mid = (low + high) // 2
+        guess = list[mid]
+        if guess == item:
             return mid
-        if guess > item:
-            high = mid-1       #если нет то сужаем круг поиска
+        elif guess > item:
+            high = mid - 1
         else:
-            low = mid+1        #если нет то сужаем круг поиска
-    return None
+            low = mid + 1
 
-print(binary_search(list,item))
 
+print(bin_search(list, item))
+#that was third try
